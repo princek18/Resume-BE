@@ -169,7 +169,7 @@ router.get("/getResumeByName/:name", async (req, res) => {
       `SELECT id, first_name, last_name, current_job_title, current_job_description, current_job_company, created_at
        FROM resume.resumes
        WHERE user_id = $1
-         AND (LOWER(first_name) = LOWER($2) OR LOWER(last_name) = LOWER($3))
+         AND (LOWER(first_name) = LOWER($2) OR LOWER(first_name) = LOWER($3) OR LOWER(last_name) = LOWER($3) OR LOWER(last_name) = LOWER($2))
        ORDER BY created_at DESC`,
       [req.userId, firstName, lastName],
     );
